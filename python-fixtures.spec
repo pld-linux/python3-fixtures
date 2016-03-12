@@ -5,7 +5,7 @@
 %bcond_without	python3 # CPython 3.x module
 
 Summary:	Fixtures, reusable state for writing clean tests and more
-Summary(pl.UTF-8):	Wyposarzenie testów - stan wielokrotnego użytku pozwalający na pisanie czystych testów
+Summary(pl.UTF-8):	Wyposażenie testów - stan wielokrotnego użytku pozwalający na pisanie czystych testów
 Name:		python-fixtures
 Version:	1.4.0
 Release:	1
@@ -56,17 +56,17 @@ Glue code is provided that makes using fixtures that meet the Fixtures
 contract in unittest compatible test cases easy and straight forward.
 
 %description -l pl.UTF-8
-Moduł fixtures (wyposarzenie) definiuje pythonowy kontrakt dla stanu
+Moduł fixtures (wyposażenie) definiuje pythonowy kontrakt dla stanu
 wielokrotnego użytku i logiki wspierającej, służące głównie do testów
 jednostkowych. Dołączona jest logika pomocnicza i adaptująca, mająca
-na celu ułatwienie pisania własnego wyposarzenia przy użyciu kontraktu
+na celu ułatwienie pisania własnego wyposażenia przy użyciu kontraktu
 fixtures. Zapewniony jest kod sklejający, pozwalający na łatwe i
-proste tworzenie wyposarzenia spełniającego kontrakt fixtures w
+proste tworzenie wyposażenia spełniającego kontrakt fixtures w
 przypadkach testowych zgodnych z modułem unittest.
 
 %package -n python3-fixtures
 Summary:	Fixtures, reusable state for writing clean tests and more
-Summary(pl.UTF-8):	Wyposarzenie testów - stan wielokrotnego użytku pozwalający na pisanie czystych testów
+Summary(pl.UTF-8):	Wyposażenie testów - stan wielokrotnego użytku pozwalający na pisanie czystych testów
 Group:		Libraries/Python
 Requires:	python3-modules >= 1:3.2
 Requires:	python3-six
@@ -80,12 +80,12 @@ Glue code is provided that makes using fixtures that meet the Fixtures
 contract in unittest compatible test cases easy and straight forward.
 
 %description -n python3-fixtures -l pl.UTF-8
-Moduł fixtures (wyposarzenie) definiuje pythonowy kontrakt dla stanu
+Moduł fixtures (wyposażenie) definiuje pythonowy kontrakt dla stanu
 wielokrotnego użytku i logiki wspierającej, służące głównie do testów
 jednostkowych. Dołączona jest logika pomocnicza i adaptująca, mająca
-na celu ułatwienie pisania własnego wyposarzenia przy użyciu kontraktu
+na celu ułatwienie pisania własnego wyposażenia przy użyciu kontraktu
 fixtures. Zapewniony jest kod sklejający, pozwalający na łatwe i
-proste tworzenie wyposarzenia spełniającego kontrakt fixtures w
+proste tworzenie wyposażenia spełniającego kontrakt fixtures w
 przypadkach testowych zgodnych z modułem unittest.
 
 %prep
