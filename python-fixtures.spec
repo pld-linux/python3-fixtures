@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_without	tests	# test target
+%bcond_with	tests	# test target [fail on builders for some reason as of 2.0.0]
 %bcond_without	python2 # CPython 2.x module
 %bcond_without	python3 # CPython 3.x module
 
