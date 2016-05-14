@@ -1,19 +1,20 @@
 #
 # Conditional build:
-%bcond_with	tests	# test target [as of 1.4.0 test_warnings fails in some cases]
+%bcond_without	tests	# test target
 %bcond_without	python2 # CPython 2.x module
 %bcond_without	python3 # CPython 3.x module
 
 Summary:	Fixtures, reusable state for writing clean tests and more
 Summary(pl.UTF-8):	Wyposażenie testów - stan wielokrotnego użytku pozwalający na pisanie czystych testów
 Name:		python-fixtures
-Version:	1.4.0
+Version:	2.0.0
 Release:	1
 License:	Apache v2.0 or BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.python.org/simple/fixtures/
 Source0:	https://pypi.python.org/packages/source/f/fixtures/fixtures-%{version}.tar.gz
-# Source0-md5:	b706476cb754c9587e7308f9eb18e201
+# Source0-md5:	146d706c1f211a5ca3be6de2d0850889
+Patch0:		%{name}-mock.patch
 URL:		https://pypi.python.org/pypi/fixtures
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
@@ -24,16 +25,17 @@ BuildRequires:	python-setuptools
 %if %{with tests}
 BuildRequires:	python-mock
 BuildRequires:	python-six
+BuildRequires:	python-testrepository
 BuildRequires:	python-testtools >= 0.9.22
 %endif
 %endif
 %if %{with python3}
-BuildRequires:	python3-modules >= 1:3.2
+BuildRequires:	python3-modules >= 1:3.3
 BuildRequires:	python3-pbr >= 0.11
 BuildRequires:	python3-setuptools
 %if %{with tests}
-BuildRequires:	python3-mock
 BuildRequires:	python3-six
+BuildRequires:	python3-testrepository
 BuildRequires:	python3-testtools >= 0.9.22
 %endif
 %endif
@@ -68,7 +70,7 @@ przypadkach testowych zgodnych z modułem unittest.
 Summary:	Fixtures, reusable state for writing clean tests and more
 Summary(pl.UTF-8):	Wyposażenie testów - stan wielokrotnego użytku pozwalający na pisanie czystych testów
 Group:		Libraries/Python
-Requires:	python3-modules >= 1:3.2
+Requires:	python3-modules >= 1:3.3
 Requires:	python3-six
 Requires:	python3-testtools >= 0.9.22
 
@@ -90,14 +92,23 @@ przypadkach testowych zgodnych z modułem unittest.
 
 %prep
 %setup -q -n fixtures-%{version}
+%patch0 -p1
 
 %build
 %if %{with python2}
+# export for tests
+export PYTHON=%{__python}
 %py_build %{?with_tests:test}
+
+%{?with_tests:%{__rm} -r .testrepository}
 %endif
 
 %if %{with python3}
+# export for tests
+export PYTHON=%{__python3}
 %py3_build %{?with_tests:test}
+
+%{?with_tests:%{__rm} -r .testrepository}
 %endif
 
 %install

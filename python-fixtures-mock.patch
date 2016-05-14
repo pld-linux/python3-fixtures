@@ -1,0 +1,14 @@
+--- fixtures-2.0.0/fixtures/tests/_fixtures/test_mockpatch.py.orig	2016-03-23 23:55:38.000000000 +0100
++++ fixtures-2.0.0/fixtures/tests/_fixtures/test_mockpatch.py	2016-05-14 14:14:25.983741571 +0200
+@@ -14,7 +14,10 @@
+ 
+ 
+ import extras
+-import mock # Yes, we only test the rolling backport
++try:
++    from unittest import mock
++except:
++    import mock
+ import testtools
+ 
+ from fixtures import (
