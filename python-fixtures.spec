@@ -8,7 +8,7 @@ Summary:	Fixtures, reusable state for writing clean tests and more
 Summary(pl.UTF-8):	Wyposażenie testów - stan wielokrotnego użytku pozwalający na pisanie czystych testów
 Name:		python-fixtures
 Version:	2.0.0
-Release:	1
+Release:	2
 License:	Apache v2.0 or BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.python.org/simple/fixtures/
