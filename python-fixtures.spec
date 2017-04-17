@@ -7,13 +7,13 @@
 Summary:	Fixtures, reusable state for writing clean tests and more
 Summary(pl.UTF-8):	Wyposażenie testów - stan wielokrotnego użytku pozwalający na pisanie czystych testów
 Name:		python-fixtures
-Version:	2.0.0
-Release:	2
+Version:	3.0.0
+Release:	1
 License:	Apache v2.0 or BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.python.org/simple/fixtures/
-Source0:	https://pypi.python.org/packages/source/f/fixtures/fixtures-%{version}.tar.gz
-# Source0-md5:	146d706c1f211a5ca3be6de2d0850889
+Source0:	https://files.pythonhosted.org/packages/source/f/fixtures/fixtures-%{version}.tar.gz
+# Source0-md5:	cd6345b497a62fad739efee66346c2e0
 Patch0:		%{name}-mock.patch
 URL:		https://pypi.python.org/pypi/fixtures
 BuildRequires:	rpm-pythonprov
@@ -39,8 +39,6 @@ BuildRequires:	python3-testrepository
 BuildRequires:	python3-testtools >= 0.9.22
 %endif
 %endif
-Requires:	python-six
-Requires:	python-testtools >= 0.9.22
 %if "%{py_ver}" >= "2.7"
 Requires:	python-modules >= 1:2.7
 %else
@@ -71,8 +69,6 @@ Summary:	Fixtures, reusable state for writing clean tests and more
 Summary(pl.UTF-8):	Wyposażenie testów - stan wielokrotnego użytku pozwalający na pisanie czystych testów
 Group:		Libraries/Python
 Requires:	python3-modules >= 1:3.3
-Requires:	python3-six
-Requires:	python3-testtools >= 0.9.22
 
 %description -n python3-fixtures
 Fixtures defines a Python contract for reusable state/support logic,
