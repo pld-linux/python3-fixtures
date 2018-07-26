@@ -11,11 +11,11 @@ Version:	3.0.0
 Release:	2
 License:	Apache v2.0 or BSD
 Group:		Libraries/Python
-#Source0Download: https://pypi.python.org/simple/fixtures/
+#Source0Download: https://pypi.org/simple/fixtures/
 Source0:	https://files.pythonhosted.org/packages/source/f/fixtures/fixtures-%{version}.tar.gz
 # Source0-md5:	cd6345b497a62fad739efee66346c2e0
 Patch0:		%{name}-mock.patch
-URL:		https://pypi.python.org/pypi/fixtures
+URL:		https://pypi.org/project/fixtures/
 BuildRequires:	rpm-pythonprov
 BuildRequires:	rpmbuild(macros) >= 1.714
 %if %{with python2}
