@@ -1,6 +1,6 @@
 #
 # Conditional build:
-%bcond_with	tests	# test target [fail on builders for some reason as of 2.0.0]
+%bcond_without	tests	# unit tests
 %bcond_without	python2 # CPython 2.x module
 %bcond_without	python3 # CPython 3.x module
 
@@ -8,7 +8,7 @@ Summary:	Fixtures, reusable state for writing clean tests and more
 Summary(pl.UTF-8):	Wyposażenie testów - stan wielokrotnego użytku pozwalający na pisanie czystych testów
 Name:		python-fixtures
 Version:	3.0.0
-Release:	3
+Release:	4
 License:	Apache v2.0 or BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/fixtures/
@@ -92,19 +92,19 @@ przypadkach testowych zgodnych z modułem unittest.
 
 %build
 %if %{with python2}
-# export for tests
-export PYTHON=%{__python}
-%py_build %{?with_tests:test}
+%py_build
 
-%{?with_tests:%{__rm} -r .testrepository}
+%if %{with tests}
+%{__python} -m testtools.run fixtures.test_suite
+%endif
 %endif
 
 %if %{with python3}
-# export for tests
-export PYTHON=%{__python3}
-%py3_build %{?with_tests:test}
+%py3_build
 
-%{?with_tests:%{__rm} -r .testrepository}
+%if %{with tests}
+%{__python3} -m testtools.run fixtures.test_suite
+%endif
 %endif
 
 %install
@@ -113,11 +113,14 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %py_install
 
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/fixtures/tests
 %py_postclean
 %endif
 
 %if %{with python3}
 %py3_install
+
+%{__rm} -r $RPM_BUILD_ROOT%{py3_sitescriptdir}/fixtures/tests
 %endif
 
 %clean
