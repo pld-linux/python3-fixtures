@@ -8,7 +8,7 @@ Summary:	Fixtures, reusable state for writing clean tests and more
 Summary(pl.UTF-8):	Wyposażenie testów - stan wielokrotnego użytku pozwalający na pisanie czystych testów
 Name:		python-fixtures
 Version:	3.0.0
-Release:	8
+Release:	9
 License:	Apache v2.0 or BSD
 Group:		Libraries/Python
 #Source0Download: https://pypi.org/simple/fixtures/
@@ -113,14 +113,24 @@ rm -rf $RPM_BUILD_ROOT
 %if %{with python2}
 %py_install
 
-%{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/fixtures/tests
+# remove tests, keep only fixtures.tests.helpers
+%{__rm} -r $RPM_BUILD_ROOT%{py_sitescriptdir}/fixtures/tests/_fixtures
+%{__rm} $RPM_BUILD_ROOT%{py_sitescriptdir}/fixtures/tests/test_*.py*
+: >$RPM_BUILD_ROOT%{py_sitescriptdir}/fixtures/tests/__init__.py
+%py_comp $RPM_BUILD_ROOT%{py_sitescriptdir}/fixtures/tests
+%py_ocomp $RPM_BUILD_ROOT%{py_sitescriptdir}/fixtures/tests
 %py_postclean
 %endif
 
 %if %{with python3}
 %py3_install
 
-%{__rm} -r $RPM_BUILD_ROOT%{py3_sitescriptdir}/fixtures/tests
+%{__rm} -r $RPM_BUILD_ROOT%{py3_sitescriptdir}/fixtures/tests/_fixtures
+%{__rm} $RPM_BUILD_ROOT%{py3_sitescriptdir}/fixtures/tests/test_*.py
+%{__rm} $RPM_BUILD_ROOT%{py3_sitescriptdir}/fixtures/tests/__pycache__/test_*.py*
+: >$RPM_BUILD_ROOT%{py3_sitescriptdir}/fixtures/tests/__init__.py
+%py3_comp $RPM_BUILD_ROOT%{py3_sitescriptdir}/fixtures
+%py3_ocomp $RPM_BUILD_ROOT%{py3_sitescriptdir}/fixtures
 %endif
 
 %clean
