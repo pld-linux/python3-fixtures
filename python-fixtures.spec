@@ -88,7 +88,7 @@ przypadkach testowych zgodnych z modułem unittest.
 
 %prep
 %setup -q -n fixtures-%{version}
-%patch0 -p1
+%patch -P 0 -p1
 
 %build
 %if %{with python2}
